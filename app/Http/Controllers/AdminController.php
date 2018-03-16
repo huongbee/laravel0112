@@ -16,6 +16,21 @@ class AdminController extends Controller
 
     function index(){
         //return view('welcome');
-        return view('home');
+        // $array =[
+        //     'title' => 'Home Page',
+        //     'description' => 'this is home page of admin... '
+        // ];
+        //return view('home',$array);
+
+
+        // return view('home',[
+        //     'title' => 'Home Page',
+        //     'description' => 'this is home page of admin... '
+        // ]);
+
+        $title = 'Home Page';
+        $description = 'this is home page of admin....';
+
+        return view('home',compact('title','description'));
     }
 }

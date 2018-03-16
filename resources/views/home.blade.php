@@ -8,5 +8,11 @@
 </head>
 <body>
     <h2>This is home page</h2>
+    <h3>
+        <?=$title?>
+    </h3>
+    <p>
+        {{$description}}
+    </p>
 </body>
 </html>
