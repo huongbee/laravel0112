@@ -37,9 +37,17 @@ class AdminController extends Controller
     function getDetailProduct($id, $alias){
         //return view('detail',compact('id','alias'));
         
+        $array = [
+            'PHP',
+            'iOS',
+            'Android',
+            'Nodejs'  
+        ];
+
         return view('detail',[
-            'id'=>$id,
-            'alias'=>$alias
+            'id' => $id,
+            'alias' => $alias,
+            'array' => $array
         ]);
     }
 }
