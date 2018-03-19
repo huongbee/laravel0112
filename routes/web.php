@@ -73,4 +73,6 @@ Route::group(['prefix'=>'admin'],function(){
 
     Route::get('edit-product-{id?}','AdminController@editProduct');
 
+    Route::get('detail-product-{id}-{alias}','AdminController@getDetailProduct');
+
 });

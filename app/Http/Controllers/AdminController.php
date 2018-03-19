@@ -33,4 +33,13 @@ class AdminController extends Controller
 
         return view('home',compact('title','description'));
     }
+
+    function getDetailProduct($id, $alias){
+        //return view('detail',compact('id','alias'));
+        
+        return view('detail',[
+            'id'=>$id,
+            'alias'=>$alias
+        ]);
+    }
 }
