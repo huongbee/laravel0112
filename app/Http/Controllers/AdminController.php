@@ -35,7 +35,7 @@ class AdminController extends Controller
     }
 
     function getDetailProduct($id, $alias){
-        //return view('detail',compact('id','alias'));
+        //return view('detail',compact('id','alias','array'));
         
         $array = [
             'PHP',
@@ -49,5 +49,10 @@ class AdminController extends Controller
             'alias' => $alias,
             'array' => $array
         ]);
+    }
+
+    function getRegister(){
+        //return view('admin/register');
+        return view('admin.register');
     }
 }

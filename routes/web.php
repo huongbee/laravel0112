@@ -76,3 +76,12 @@ Route::group(['prefix'=>'admin'],function(){
     Route::get('detail-product-{id}-{alias}','AdminController@getDetailProduct');
 
 });
+
+
+//Route::get('register','AdminController@getRegister')->name('register');
+
+Route::get('register',[
+    'uses'=>'AdminController@getRegister',
+    'as'=>'register', //name route
+    //'where'=>''
+]);
