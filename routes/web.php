@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*
 Route::get('/', function () {
     return view('welcome');
 });
@@ -77,7 +77,7 @@ Route::group(['prefix'=>'admin'],function(){
 
 });
 
-
+*/
 //Route::get('register','AdminController@getRegister')->name('register');
 
 Route::get('register',[
@@ -101,3 +101,6 @@ Route::post('upload-file',[
     'uses'=>'AdminController@postFormUpload',
     'as'=>'uploadFile'
 ]);
+
+Route::get('detail-page','AdminController@getDetail');
+Route::get('home-page','AdminController@getHome');

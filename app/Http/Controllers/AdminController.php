@@ -160,4 +160,12 @@ class AdminController extends Controller
 
     }
 
+    function getDetail(){
+        return view('pages.detail');
+    }
+
+    function getHome(){
+        return view('pages.home');
+    }
+
 }
