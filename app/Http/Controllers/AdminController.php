@@ -94,4 +94,37 @@ class AdminController extends Controller
     
         /// luu db
     }
+
+    function getFormUpload(){
+        return view('admin.upload');
+    }
+
+    function postFormUpload(Request $req){
+        if($req->hasFile('image')){
+            $file = $req->file('image');
+
+            //kiem tra size < 1 Mb, type (png/jpg/doc), rename
+
+            $size = $file->getSize();
+            if($size > 1024*1024){
+                echo 'File quá lớn';
+                return;
+            }
+            $ext = $file->getClientOriginalExtension();
+            $arrExt = ['doc','png','jpg'];
+            if(!in_array($ext,$arrExt)){
+                echo "File ko được phép chọn";
+                return;
+            }
+
+            $newName = date('Y-m-d-H-i-m').'-'.$file->getClientOriginalName();
+            $file->move('images',$newName);
+            echo "Upload Thành công";
+        }
+        else{
+            echo 'Vui lòng chọn file';
+            return;
+        }
+    }
+
 }

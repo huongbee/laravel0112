@@ -91,3 +91,13 @@ Route::post('register',[
     'as'=>'register'
 ]);
 
+
+Route::get('upload-file',[
+    'uses'=>'AdminController@getFormUpload',
+    'as'=>'uploadFile'
+]);
+
+Route::post('upload-file',[
+    'uses'=>'AdminController@postFormUpload',
+    'as'=>'uploadFile'
+]);
