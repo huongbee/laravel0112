@@ -85,3 +85,9 @@ Route::get('register',[
     'as'=>'register', //name route
     //'where'=>''
 ]);
+
+Route::post('register',[
+    'uses'=>'AdminController@postRegister',
+    'as'=>'register'
+]);
+

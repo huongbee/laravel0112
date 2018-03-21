@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Validator;
 
 class AdminController extends Controller
 {
@@ -54,5 +55,43 @@ class AdminController extends Controller
     function getRegister(){
         //return view('admin/register');
         return view('admin.register');
+    }
+
+    function postRegister(Request $req){
+        //echo $fullname = $req->input('fullname');
+        //echo $fullname = $req->fullname;
+        // $input = $req->all();
+
+        // dd($input);
+
+        /**
+         * fullname: required, min:6, max:50
+         * email : required, đúng định dang
+         * birthdate required, đúng định dang
+         * age: required, phải nhập số
+         * pw: required, min:6, ,max: 20
+         * confirm_pw required, giống với pw
+         */
+        $arrV = [
+            'fullname' => 'required|min:6|max:50',
+            'email' => 'required|email',
+            'age'=>'required|numeric',
+            'birthdate'=> 'required|date',
+            'password' => 'required|min:6|max:20',
+            'confirm_password'=> 'required|same:password'
+        ];
+
+        $arrMess = [
+            'fullname.required' => 'Họ tên ko được rỗng',
+            'fullname.min' => 'Họ tên ít nhất :min ký tự'
+        ];
+        $validator = Validator::make($req->all(),$arrV,$arrMess);
+
+        if($validator->fails())
+            return redirect()->route('register')
+                            ->withErrors($validator)
+                            ->withInput();   
+    
+        /// luu db
     }
 }
