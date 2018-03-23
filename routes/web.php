@@ -151,7 +151,7 @@ Route::get('modifyle-table-product',function(){
 Route::get('modifyle-table-type-product',function(){
 
     Schema::table('type_product',function($table){
-        $table->renameColumn('update_at','create_at');
+        //$table->renameColumn('update_at','create_at');
         $table->datetime('create_at')->change();
     });
     echo "success";
