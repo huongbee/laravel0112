@@ -104,3 +104,64 @@ Route::post('upload-file',[
 
 Route::get('detail-page','AdminController@getDetail');
 Route::get('home-page','AdminController@getHome');
+
+//id, name, price, image
+Route::get('create-table-product',function(){
+
+    Schema::create('product',function($table){
+        $table->increments('id'); //PK, AI
+        $table->string('name',100);
+        $table->float('price',8,0);
+        $table->string('image',50);
+    });
+    echo "success";
+
+});
+
+// id, name, status->default:0
+Route::get('create-table-type-product',function(){
+
+    Schema::create('type_product',function($table){
+        $table->increments('id'); //PK, AI
+        $table->string('name',100);
+        $table->boolean('status')
+                ->default(0)
+                ->comment('0:false; 1:true');
+        $table->date('update_at');
+    });
+    echo "success";
+
+});
+
+Route::get('modifyle-table-product',function(){
+
+    Schema::table('product',function($table){
+        $table->integer('type_id')->unsigned();
+
+        //tạo khoá ngoại
+        $table->foreign('type_id')
+                ->references('id')
+                ->on('type_product');
+
+    });
+    echo "success";
+
+});
+
+Route::get('modifyle-table-type-product',function(){
+
+    Schema::table('type_product',function($table){
+        $table->renameColumn('update_at','create_at');
+        $table->datetime('create_at')->change();
+    });
+    echo "success";
+});
+
+
+Route::get('drop-product',function(){
+
+    Schema::drop('product');
+    Schema::dropIfExists('product');
+    
+    echo "success";
+});
