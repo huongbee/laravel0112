@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Validator;
+use DB;
 
 class AdminController extends Controller
 {
@@ -168,4 +169,9 @@ class AdminController extends Controller
         return view('pages.home');
     }
 
+    //select * from foods
+    function getProducts(){
+        $data = DB::table('foods')->get();
+        dd($data);
+    }
 }

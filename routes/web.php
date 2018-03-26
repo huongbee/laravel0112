@@ -165,3 +165,6 @@ Route::get('drop-product',function(){
     
     echo "success";
 });
+
+
+Route::get('query-builder','AdminController@getProducts');
